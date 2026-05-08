@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+{% block title %}Collection — 21andsaints{% endblock %}
+
+{% block content %}
+
+<section class="page-hero page-hero--collection">
+    <div class="page-hero-content">
+        <span class="section-label">SS 2025</span>
+        <h1>The Collection</h1>
+    </div>
+</section>
+
+<section class="collection-page">
+
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="tees">Tees</button>
+        <button class="filter-btn" data-filter="jackets">Jackets</button>
+        <button class="filter-btn" data-filter="bottoms">Bottoms</button>
+        <button class="filter-btn" data-filter="accessories">Accessories</button>
+    </div>
+
+    <div class="product-grid">
+
+        <a href="/product" class="product-card" data-category="tees">
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=700" alt="Oversized Tee">
+                <span class="product-badge">New</span>
+            </div>
+            <div class="product-info">
+                <h3>Oversized Graphic Tee</h3>
+                <span>₹2,499</span>
+            </div>
+        </a>
+
+        <a href="/product" class="product-card" data-category="jackets">
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=700" alt="Bomber Jacket">
+            </div>
+            <div class="product-info">
+                <h3>Saints Bomber Jacket</h3>
+                <span>₹12,999</span>
+            </div>
+        </a>
+
+        <a href="/product" class="product-card" data-category="bottoms">
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=700" alt="Cargo Pants">
+                <span class="product-badge">Bestseller</span>
+            </div>
+            <div class="product-info">
+                <h3>Utility Cargo Pants</h3>
+                <span>₹5,999</span>
+            </div>
+        </a>
+
+        <a href="/product" class="product-card" data-category="tees">
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=700" alt="Washed Tee">
+            </div>
+            <div class="product-info">
+                <h3>Acid Wash Tee</h3>
+                <span>₹2,199</span>
+            </div>
+        </a>
+
+        <a href="/product" class="product-card" data-category="jackets">
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=700" alt="Denim Jacket">
+                <span class="product-badge">Limited</span>
+            </div>
+            <div class="product-info">
+                <h3>Distressed Denim Jacket</h3>
+                <span>₹9,499</span>
+            </div>
+        </a>
+
+        <a href="/product" class="product-card" data-category="accessories">
+            <div class="product-img-wrap">
+                <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=700" alt="Cap">
+            </div>
+            <div class="product-info">
+                <h3>Saints 6-Panel Cap</h3>
+                <span>₹1,299</span>
+            </div>
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.product-card').forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

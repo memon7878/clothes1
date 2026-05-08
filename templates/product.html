@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block title %}Oversized Graphic Tee — 21andsaints{% endblock %}
+
+{% block content %}
+
+<section class="product-page">
+
+    <div class="product-gallery">
+        <div class="gallery-main">
+            <img id="mainImg" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900" alt="Product">
+        </div>
+        <div class="gallery-thumbs">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=300" alt="thumb 1" class="thumb active" onclick="setImg(this)">
+            <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=300" alt="thumb 2" class="thumb" onclick="setImg(this)">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=300" alt="thumb 3" class="thumb" onclick="setImg(this)">
+        </div>
+    </div>
+
+    <div class="product-details">
+        <p class="product-brand">21andsaints</p>
+        <h1 class="product-name">Oversized Graphic Tee</h1>
+        <p class="product-price">₹2,499</p>
+
+        <div class="product-size">
+            <p class="detail-label">Select Size</p>
+            <div class="size-grid">
+                <button class="size-btn">XS</button>
+                <button class="size-btn active">S</button>
+                <button class="size-btn">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+                <button class="size-btn">XXL</button>
+            </div>
+        </div>
+
+        <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-wishlist" title="Wishlist">♡</button>
+        </div>
+
+        <div class="product-desc">
+            <p>A heavyweight oversized tee with saints-inspired graphic print. Made from 100% organic cotton — soft, durable, and built to outlast trends.</p>
+            <ul>
+                <li>100% organic cotton</li>
+                <li>Dropped shoulders</li>
+                <li>Screen-printed graphic</li>
+                <li>Washed for a worn-in feel</li>
+            </ul>
+        </div>
+
+        <div class="product-meta">
+            <span>SKU: 21S-OT-001</span> &nbsp;|&nbsp; <span>Category: Tees</span>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function setImg(el) {
+    document.getElementById('mainImg').src = el.src.replace('w=300','w=900');
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+}
+document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
+</script>
+{% endblock %}
